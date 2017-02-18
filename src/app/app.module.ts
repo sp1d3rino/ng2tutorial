@@ -11,13 +11,17 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { HeroesListComponent } from './heroes-list/heroes-list.component';
 
 import { AppRoutingModule }     from './app-routing.module';
+import { TunesListComponent } from './tunes-list/tunes-list.component';
+import { TuneDetailComponent } from './tune-detail/tune-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroDetailComponent,
     DashboardComponent,
-    HeroesListComponent
+    HeroesListComponent,
+    TunesListComponent,
+    TuneDetailComponent
   ],
   imports: [
     BrowserModule,

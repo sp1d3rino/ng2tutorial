@@ -1,0 +1,14 @@
+<h2>My Tunes</h2>
+<ul class="heroes">
+  <li *ngFor="let tune of tunes"  [routerLink]="['/tune_detail', tune._id]"
+    [class.selected]="tune === selectedTune"
+    (click)="onSelect(tune)">
+    <span class="badge">{{tune.grilleAuthorName}}</span> {{tune.tuneTitle}}
+  </li>
+</ul>
+<div *ngIf="selectedHero">
+  <h2>
+    {{selectedTune.tuneTitle | uppercase}} is my tune
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

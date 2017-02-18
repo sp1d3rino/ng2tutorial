@@ -1,0 +1,9 @@
+<button (click)="goBack()">Back</button>
+<div *ngIf="tune">
+ <h2>{{tune.tuneTitle}} details!</h2>
+ <div><label>id: </label>{{tune.grilleAuthorName}}</div>
+ <div>
+   <label>name: </label>
+   <input [(ngModel)]="tune.tuneTitle" placeholder="name"/>
+ </div>
+</div>

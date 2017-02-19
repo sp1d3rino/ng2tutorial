@@ -11,14 +11,15 @@ import { Tune } from 'app/tune';
 export class TunesListComponent implements OnInit {
 
   constructor(private heroService: HeroService) { }
-
+  errorMessage: string;
   title = 'Tour of Tunes';
   tunes: Tune[];
   selectedTune: Tune;
 
   getTunes(): void{
-    this.heroService.getTunes().then(tunes => this.tunes = tunes);
-    JSON.stringify(this.tunes,null);
+    this.heroService.getTunes()  .subscribe(
+        tunes => this.tunes = tunes,
+        error =>  this.errorMessage = <any>error);
   }
 
 
@@ -26,7 +27,7 @@ export class TunesListComponent implements OnInit {
     this.selectedTune = tune;
   }
 
-  
+
   ngOnInit() {
 
     this.getTunes();

@@ -1,5 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
-import { Tune } from '../tune';
+import { TuneDetail } from '../tune_detail';
 import { ActivatedRoute, Params }   from '@angular/router';
 import { Location }                 from '@angular/common';
 
@@ -11,20 +11,32 @@ import { HeroService } from '../hero.service';
   styleUrls: ['./tune-detail.component.css']
 })
 export class TuneDetailComponent implements OnInit {
+  errorMessage: string;
+
   @Input()
-  tune: Tune;
+  tune: TuneDetail;
+
   constructor(
     private heroService: HeroService,
     private route: ActivatedRoute,
     private location: Location
   ) { }
 
-  ngOnInit() {
 
-    this.route.params
-    .switchMap((params: Params) => this.heroService.getTune(params['id']))
-    .subscribe(tune => this.tune = tune);
+  getTuneDetail()
+  {
+      this.route.params
+      .switchMap((params: Params) => this.heroService.getTune(params['id']))
+      .subscribe(
+        tune => this.tune = tune,
+        error =>  this.errorMessage = <any>error);
   }
+
+  ngOnInit() {
+    this.getTuneDetail();
+  }
+
+
 
 
   goBack(): void {

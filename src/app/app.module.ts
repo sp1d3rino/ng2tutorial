@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 
+import { MaterialModule } from '@angular/material';
+
 import { AppComponent } from './app.component';
 import { HeroDetailComponent } from './hero-detail/hero-detail.component';
 import { HeroService }         from './hero.service';
@@ -13,6 +15,7 @@ import { HeroesListComponent } from './heroes-list/heroes-list.component';
 import { AppRoutingModule }     from './app-routing.module';
 import { TunesListComponent } from './tunes-list/tunes-list.component';
 import { TuneDetailComponent } from './tune-detail/tune-detail.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +24,15 @@ import { TuneDetailComponent } from './tune-detail/tune-detail.component';
     DashboardComponent,
     HeroesListComponent,
     TunesListComponent,
-    TuneDetailComponent
+    TuneDetailComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MaterialModule.forRoot()
 
   ],
   providers: [HeroService],

@@ -5,6 +5,10 @@ import { HeroesListComponent }      from './heroes-list/heroes-list.component';
 import { HeroDetailComponent }  from './hero-detail/hero-detail.component';
 import { TunesListComponent }  from './tunes-list/tunes-list.component';
 import { TuneDetailComponent }  from './tune-detail/tune-detail.component';
+import { LoginComponent }  from './login/login.component';
+
+
+
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -12,6 +16,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: HeroDetailComponent },
   { path: 'tune_detail/:id', component: TuneDetailComponent },
   { path: 'heroes',     component: HeroesListComponent },
+  { path: 'login',     component: LoginComponent },
   { path: 'tunes',     component: TunesListComponent }
 
 ];

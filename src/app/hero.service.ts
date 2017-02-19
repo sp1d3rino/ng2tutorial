@@ -2,7 +2,10 @@ import { Injectable } from '@angular/core';
 import { HEROES } from './mock-heroes';
 import { Hero } from './hero';
 import { Tune } from './tune';
-import { Headers, Http, Response } from '@angular/http';
+import { TuneDetail } from './tune_detail';
+import { Headers, Http, Response,RequestOptions  } from '@angular/http';
+import { Observable }       from 'rxjs/Observable';
+import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 
@@ -17,24 +20,20 @@ export class HeroService {
 
   } // stub
 
-  getTunes():Promise<Tune[]>{
+  getTunes():Observable<Tune[]>{
     console.log("Called getTunes");
 
     return this.http.get(this.tunesUrl)
-    .toPromise()
-    .then(response => response.json() as Tune[])
-    .catch((res: Response) => this.handleError(res));
+    .map(this.extractData);
 
 
   }
-  getTune(id: string): Promise<Tune> {
+
+  getTune (id: string): Observable<TuneDetail> {
     const url = `${this.tunesUrl}/${id}`;
     return this.http.get(url)
-    .toPromise()
-    .then(response => response.json() as Tune)
-    .catch(this.handleError);
+    .map(this.extractData);
   }
-
 
   getHeroesSlowly(): Promise<Hero[]> {
     return new Promise(resolve => {
@@ -52,6 +51,14 @@ export class HeroService {
     console.error('An error occurred', error); // for demo purposes only
     return Promise.reject(error.message || error);
   }
+
+
+
+  private extractData(res: Response) {
+    let body = res.json();
+    return body || { };
+  }
+
 
 
 }

@@ -1,0 +1,23 @@
+<div >
+    <div >
+      <h3>Login</h3>
+
+      <form (click)="loginUser()" class="form">
+        <div>
+          <md-input-container class="md-block">
+            <input type="text" class="form-control" [(ngModel)]="formData.username" placeholder="username" required=""/>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <input type="password" class="form-control"  [(ngModel)]="formData.password" placeholder="password" required=""/>
+          </md-input-container>
+
+          <md-card>
+          <button md-button type="submit"> Login</button>
+            <span class="text-danger">{{ error }}</span>
+        </md-card>
+
+        </div>
+      </form>
+    </div>
+</div>

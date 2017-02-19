@@ -16,6 +16,7 @@ import { AppRoutingModule }     from './app-routing.module';
 import { TunesListComponent } from './tunes-list/tunes-list.component';
 import { TuneDetailComponent } from './tune-detail/tune-detail.component';
 import { LoginComponent } from './login/login.component';
+import { AuthenticationService } from './user/authentication.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { LoginComponent } from './login/login.component';
     MaterialModule.forRoot()
 
   ],
-  providers: [HeroService],
+  providers: [HeroService, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
